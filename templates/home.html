@@ -1,0 +1,40 @@
+{% extends 'layouts.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block title %}
+Voting System | Home
+{% endblock %}
+
+{% block body %}
+<div class="home">
+  <div class="info">
+    <div class="heading">
+      <h4>Electronic</h4>
+      <h4>Voting</h4>
+    </div>
+    <hr>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi placeat et deleniti, quidem non voluptate eveniet
+      quia quod tenetur velit suscipit, officia illum dolores ipsam, corporis commodi optio! Facere perspiciatis minus
+      sit aliquam blanditiis quibusdam.</p>
+    {% if current_user.vote %}
+    <div id="casted">
+      <img loading="lazy" src="{{ url_for('static', filename='Images/tick.png') }}" alt="tick">
+      <p>You have casted your vote</p>
+    </div>
+    {% elif election and current_user.is_authenticated %}
+    <a href="{{ url_for('election', election_id=election.id) }}">
+      <button id="btn">Resume Election</button>
+    </a>
+    {% else %}
+    <a href="{{ url_for('preparing_election') }}">
+      <button id="btn">Get Started</button>
+    </a>
+    {% endif %}
+  </div>
+  <div class="image"></div>
+</div>
+{% endblock %}

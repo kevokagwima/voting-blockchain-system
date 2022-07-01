@@ -1,0 +1,88 @@
+.home {
+  min-height: 100vh;
+  background-image: linear-gradient(160deg, #e02c92, #2d0a75, #191153);
+  display: flex;
+  gap: 10rem;
+  align-items: center;
+  color: white;
+}
+
+.info {
+  padding: 0 2rem 0 6rem;
+  max-width: 40vw;
+}
+
+.heading h4 {
+  font-size: 5.5rem;
+  letter-spacing: 1px;
+}
+
+.heading h4:first-child {
+  font-family: var(--font-2);
+  font-weight: 100;
+}
+
+.heading h4:last-child {
+  font-family: var(--font-3);
+  font-weight: bolder;
+  margin-top: -1.4rem;
+}
+
+.info hr {
+  border: none;
+  outline: 1px solid rgb(169, 169, 169);
+  margin: 1.5rem 0 2rem;
+  max-width: 49%;
+}
+
+.info p {
+  font-family: var(--font-4);
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+#btn {
+  margin-top: 3rem;
+  border: none;
+  background-color: #55f2ff;
+  padding: 0.8em 1.5em;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  font-family: var(--btn-font);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#btn:hover {
+  transform: scale(1.08);
+}
+
+.image {
+  min-height: 38rem;
+  aspect-ratio: 1/1;
+  background-image: url(../Images/wavy.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#casted {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-3);
+  background-image: linear-gradient(120deg, greenyellow, blue, red);
+  max-width: max-content;
+  padding: 1rem;
+  border-radius: 30rem;
+}
+
+#casted p {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+#casted img {
+  max-height: 2rem;
+}

@@ -1,0 +1,79 @@
+nav {
+  background-color: white;
+}
+
+#logo > a h4 {
+  color: #212121;
+}
+
+.login p {
+  color: black;
+}
+
+.login p > b {
+  color: #212121;
+}
+
+.verify {
+  min-height: 100vh;
+  padding: 8rem 2rem 2rem;
+}
+
+.verify > h4 {
+  text-align: center;
+  font-family: var(--font-5);
+  font-size: 2rem;
+}
+
+form {
+  background-color: white;
+  max-width: max-content;
+  margin: 5rem auto;
+  padding: 2rem;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: auto;
+  row-gap: 3rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.input label {
+  font-family: var(--font-4);
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.input input {
+  padding: 15px 0;
+  text-indent: 1.8rem;
+  min-width: 30vw;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30rem;
+  background-color: whitesmoke;
+  color: #212121;
+  font-family: var(--font-3);
+  letter-spacing: 1px;
+}
+
+.btn {
+  border: none;
+  padding: 0.8em 1em;
+  background-image: linear-gradient(160deg, #e02c92, #2d0a75, #191153);
+  color: white;
+  font-family: var(--btn-font);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border-radius: 30rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.side {
+  background-image: linear-gradient(160deg, #e02c92, #2d0a75, #191153);
+}

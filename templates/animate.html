@@ -1,0 +1,21 @@
+{% extends 'layouts.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+{% endblock %}
+
+{% block title %}
+Voting system | Election
+{% endblock %}
+
+{% block body %}
+<div class="animate">
+  <div class="push-pop">
+    <div></div>
+    <div></div>
+  </div>
+  <h4 id="info"></h4>
+</div>
+
+{% endblock %}

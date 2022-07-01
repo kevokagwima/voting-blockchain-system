@@ -1,0 +1,41 @@
+nav {
+  background-color: white;
+}
+
+#logo > a h4 {
+  color: #212121;
+}
+
+.login p {
+  color: black;
+}
+
+.login p > b {
+  color: #212121;
+}
+
+.vote {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.image img {
+  max-height: 10rem;
+}
+
+.vote > h4 {
+  font-family: var(--font-3);
+  font-size: 2rem;
+  text-align: center;
+  background: -webkit-linear-gradient(#e02c92, #191153, #e02c92);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  font-family: var(--font-4);
+}

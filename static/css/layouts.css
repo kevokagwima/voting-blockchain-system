@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&family=Titan+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Candal&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-bgcolor: #191153;
+  --other-bgcolor: #2d0a75;
+  --secondary-bgcolor: #e02c92;
+  --font-1: "Titan One", cursive;
+  --font-2: "Mulish", sans-serif;
+  --font-3: "Kanit", sans-serif;
+  --font-4: "IBM Plex Sans Arabic", sans-serif;
+  --font-5: "Montserrat", sans-serif;
+  --btn-font: "Candal", sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+nav {
+  background-color: transparent;
+  padding: 1rem 3rem 1rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  min-width: 100vw;
+}
+
+a {
+  text-decoration: none;
+}
+
+#logo a > h4 {
+  font-family: var(--font-1);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.login {
+  cursor: pointer;
+}
+
+.login p {
+  font-family: var(--font-5);
+  letter-spacing: 1px;
+  font-size: 1rem;
+  color: white;
+}
+
+.login p > b {
+  color: #55f2ff;
+}
+
+.btns {
+  border: none;
+  background-color: transparent;
+  outline: 2px solid white;
+  padding: 0.5rem 1rem;
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 8rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-family: system-ui;
+}
+
+.btns:hover {
+  transform: scale(1.05);
+}
+
+.btn2 {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.btn--loading .button--text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.btn--loading::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 20px;
+  inset: 0;
+  margin: auto;
+  border: 3px solid transparent;
+  border-top-color: white;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.tops {
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  min-width: 60rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2px 0 0;
+  animation: fade-away 1s 4s forwards;
+}
+
+@keyframes fade-away {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.alert {
+  height: 3.5rem;
+  font-family: system-ui;
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: 4px;
+  min-width: 10vw;
+  max-width: 30vw;
+  margin-inline: auto;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding-right: 1rem;
+  box-shadow: 0 0 10px -6px black;
+}
+.side {
+  height: 100%;
+  width: 8px;
+  background-color: white;
+}
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.alert .alert-link {
+  font-weight: bold;
+}
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+.alert > p + p {
+  margin-top: 5px;
+}
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.alert-success hr {
+  border-top-color: #c9e2b3;
+}
+.alert-success .alert-link {
+  color: #2b542c;
+}
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.alert-info hr {
+  border-top-color: #a6e1ec;
+}
+.alert-info .alert-link {
+  color: #245269;
+}
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.alert-warning hr {
+  border-top-color: #f7e1b5;
+}
+.alert-warning .alert-link {
+  color: #66512c;
+}
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.alert-danger hr {
+  border-top-color: #e4b9c0;
+}
+.alert-danger .alert-link {
+  color: #843534;
+}

@@ -1,0 +1,92 @@
+#logo > a h4 {
+  color: #212121;
+}
+
+.btn1 {
+  color: black;
+  outline: 2px solid grey;
+}
+
+.form {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.form > h4 {
+  font-family: var(--font-3);
+  color: #212121;
+  font-size: 3.5rem;
+}
+
+form {
+  min-height: 3rem;
+  max-width: 60vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1.2rem 2rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.email,
+.btn {
+  grid-column: 1/3;
+}
+
+label {
+  color: #212121;
+  font-family: var(--font-4);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+input {
+  padding: 0.9em 0.6em;
+  outline: 1px solid grey;
+  min-width: 20vw;
+  border-radius: 10rem;
+  text-indent: 0.5rem;
+  font-size: 1.1rem;
+  border: none;
+  color: black;
+  font-weight: 600;
+  font-family: var(--font-5);
+  letter-spacing: 1px;
+  background-color: whitesmoke;
+}
+
+input:focus {
+  outline: 2px solid purple;
+}
+
+input::placeholder {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.btn {
+  margin-top: 3rem;
+  background-image: linear-gradient(160deg, #e02c92, #191153);
+  color: white;
+  border: none;
+  font-family: system-ui;
+  border-radius: 10rem;
+  cursor: pointer;
+  padding: 0.8em;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.side {
+  background-color: black;
+}

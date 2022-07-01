@@ -1,0 +1,28 @@
+{% extends 'layouts.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/verify.css') }}">
+{% endblock %}
+
+{% block title %}
+Voting System | Verify User
+{% endblock %}
+
+{% block body %}
+<div class="verify">
+  <h4>You need to verify your identity before <br> casting your vote</h4>
+  <form action="{{ url_for('generate_key') }}" , method="post">
+    {{ form.hidden_tag() }}
+    <div class="input">
+      {{ form.secret_key.label }}
+      {{ form.secret_key(placeholder="Your Secret Key") }}
+    </div>
+    <button class="btn" type="submit">
+      <span class="button--text">Verify</span>
+    </button>
+  </form>
+</div>
+
+<script src="{{ url_for('static', filename='Js/register.js') }}"></script>
+{% endblock %}

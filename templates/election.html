@@ -1,0 +1,54 @@
+{% extends 'layouts.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/election.css') }}">
+{% endblock %}
+
+{% block title %}
+Voting System | Election
+{% endblock %}
+
+{% block body %}
+<div class="election">
+  <p id="election_id">Election ID - <span>{{ election.election_id }}</span></p>
+  <p id="election_date">Ends on - <span>{{ election.end_date.strftime("%d/%m/%Y") }}</span></p>
+  <h4 id="heading">Select the leader to vote for</h4>
+  <div class="candidates">
+    {% for candidate in candidates %}
+    <div data-candidate="{{ candidate.id }}" class="card">
+      <div class="selected-badge">
+        <img loading="lazy" src="{{ url_for('static', filename='Images/tick.png') }}" alt="tick">
+      </div>
+      <div class="img">
+        <img src="{{ url_for('static', filename='Images/man.png') }}" alt="candidate image">
+      </div>
+      <div class="info">
+        <h4>{{ candidate.full_name }}</h4>
+        <p>{{ candidate.party }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="cast-vote">
+    <a href="#" onclick="sendVote()">
+      <button id="btn">Cast my vote</button>
+    </a>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='Js/election.js') }}"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script>
+  function sendVote() {
+    const candidates = document.querySelector(".cards")
+    $.ajax({
+      url: "/my-vote/{{election.id}}",
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify(candidates.dataset.candidate)
+    });
+    window.location.replace("/vote-casted/{{election.id}}");
+  }
+</script>
+{% endblock %}

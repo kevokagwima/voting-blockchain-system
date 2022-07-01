@@ -1,0 +1,132 @@
+nav {
+  display: none;
+}
+
+.election {
+  min-height: 100vh;
+  padding-top: 8rem;
+  background-color: var(--main-bgcolor);
+}
+
+#election_id {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  color: whitesmoke;
+  font-family: var(--font-4);
+  letter-spacing: 1px;
+}
+
+#election_date {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  color: whitesmoke;
+  font-family: var(--font-4);
+  letter-spacing: 1px;
+}
+
+#election_id > span,
+#election_date > span {
+  color: greenyellow;
+}
+
+#heading {
+  color: whitesmoke;
+  font-size: 3rem;
+  font-family: var(--font-3);
+  text-align: center;
+}
+
+.candidates {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  color: white;
+  max-width: max-content;
+  margin: 5rem auto 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.card {
+  background-color: var(--other-bgcolor);
+  box-shadow: 0 0 10px -6px black;
+  padding: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  position: relative;
+  min-width: 20vw;
+  text-align: center;
+}
+
+.cards,
+.card:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(160deg, #e02c92, #2d0a75, #191153);
+  outline: 2px solid whitesmoke;
+}
+
+.img img {
+  max-height: 10rem;
+}
+
+.info {
+  text-align: center;
+  padding: 0.5rem 0 0.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.info h4 {
+  font-family: var(--font-5);
+}
+
+.info p {
+  font-family: var(--font-3);
+}
+
+.selected-badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 15%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: rgb(2, 188, 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.selected-badge img {
+  max-height: 1.8rem;
+}
+
+.show-selected {
+  display: flex;
+}
+
+.cast-vote {
+  max-width: max-content;
+  margin-inline: auto;
+  margin-top: 5rem;
+}
+
+#btn {
+  border: none;
+  padding: 1em 1.5em;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  background-color: rgb(0, 225, 0);
+  cursor: pointer;
+  font-family: var(--btn-font);
+  text-transform: uppercase;
+}
