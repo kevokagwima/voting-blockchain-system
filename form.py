@@ -43,3 +43,6 @@ class Login(FlaskForm):
 
 class Verification(FlaskForm):
   secret_key = StringField(label="Enter Secret Key", validators=[DataRequired()])
+
+class I_voted(FlaskForm):
+  private_key = StringField(label="Enter Private Key", validators=[DataRequired()])

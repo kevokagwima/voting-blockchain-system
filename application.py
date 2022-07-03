@@ -153,42 +153,126 @@ def setting_election():
 @app.route("/election-time/<int:election_id>")
 @login_required
 def election(election_id):
-  election = Election.query.get(election_id)
-  votes = Vote.query.filter_by(election=election.id).all()
-  if current_user.vote and current_user.vote[-1] in votes:
-    flash(f"You have already casted your vote", category="danger")
+  try:
+    election = Election.query.get(election_id)
+    votes = Vote.query.filter_by(election=election.id).all()
+    if current_user.vote and current_user.vote[-1] in votes:
+      flash(f"You have already casted your vote", category="danger")
+      return redirect(url_for('home'))
+    candidates = Candidates.query.filter_by(election=election.id).all()
+  except:
+    flash(f"Invalid URL", category="danger")
     return redirect(url_for('home'))
-  candidates = Candidates.query.filter_by(election=election.id).all()
   
   return render_template("election.html", candidates=candidates, election=election)
 
-@app.route("/my-vote/<int:election_id>", methods=["POST"])
+@app.route("/my-vote/<int:election_id>", methods=["POST", "GET"])
 def vote(election_id):
-  election = Election.query.get(election_id)
-  json_data = request.get_json()
-  candidate_id = json.loads(json_data)
-  print(candidate_id)
-  my_vote = Vote(
-    vote_id = random.randint(10000000,99999999),
-    private_key = "".join(random.choices(string.ascii_uppercase + string.digits, k=15)),
-    public_key = "".join(random.choices(string.ascii_uppercase + string.digits, k=15)),
-    date = datetime.datetime.now(),
-    candidate = candidate_id,
-    election = election.id,
-    user = current_user.id
-  )
-  db.session.add(my_vote)
-  db.session.commit()
-  flash(f"Your vote has been recorded, thankyou for participating", category="success")
-
-  return redirect(url_for('vote_casted', election_id=election.id))
+  if request.method == "GET":
+    flash(f"Invalid URL", category="danger")
+    return redirect(url_for('home'))
+  try:
+    json_data = request.get_json()
+    candidate_id = json.loads(json_data)
+    election = Election.query.get(election_id)
+    votes = Vote.query.filter_by(election=election.id).all()
+    my_vote = Vote(
+      vote_id = random.randint(10000000,99999999),
+      private_key = "".join(random.choices(string.ascii_uppercase + string.digits, k=15)),
+      public_key = "".join(random.choices(string.ascii_uppercase + string.digits, k=15)),
+      date = datetime.datetime.now(),
+      candidate = candidate_id,
+      election = election.id,
+      user = current_user.id
+    )
+    db.session.add(my_vote)
+    db.session.commit()
+    flash(f"Your vote has been recorded, thankyou for participating", category="success")
+    return redirect(url_for('vote_casted', election_id=election.id))
+  except:
+    flash(f"Invalid URL", category="danger")
+    return redirect(url_for('home'))
 
 @app.route("/vote-casted/<int:election_id>")
 def vote_casted(election_id):
-  election = Election.query.get(election_id)
-  vote = Vote.query.filter_by(election=election.id).first()
+  try:
+    election = Election.query.get(election_id)
+    vote = Vote.query.filter_by(election=election.id, user=current_user.id).first()
+    message = Mail(
+      from_email='kevinkagwima4@gmail.com',
+      to_emails=f'kevokagwima@gmail.com',
+      subject='ELECTRONIC VOTING - VERIFICATION',
+      html_content=f'<strong>Dear client {current_user.first_name} {current_user.last_name}</strong>, thank you for participating in this election, your vote has been recorded and kept a secret. If you wish to retrieve your vote provide your private key <b>{vote.private_key}</b>.'
+    )
+    sg = SendGridAPIClient(os.environ['Email_api_key'])
+    response = sg.send(message)
+  except:
+    flash(f"Invalid URL", category="danger")
+    return redirect(url_for('home'))
 
   return render_template("vote.html"), {"Refresh": f"6; url=http://127.0.0.1:5000/home"}
+
+@app.route("/private-key/<int:election_id>", methods=["POST", "GET"])
+def private_key(election_id):
+  try:
+    form = I_voted()
+    election = Election.query.get(election_id)
+    vote = Vote.query.filter_by(election=election.id, user=current_user.id).first()
+    if form.validate_on_submit():
+      user_private_key = form.private_key.data
+      if user_private_key == vote.private_key:
+        flash(f"We've sent you a secret key in your email address", category="success")
+        secret_key = "".join(random.choices(string.ascii_uppercase + string.digits, k=10))
+        session["secret_key_result"] = secret_key
+        message = Mail(
+          from_email='kevinkagwima4@gmail.com',
+          to_emails=f'kevokagwima@gmail.com',
+          subject='ELECTRONIC VOTING - VERIFICATION',
+          html_content=f'<strong>Dear client {current_user.first_name} {current_user.last_name}</strong> Use this secret key <b>{secret_key}</b>.'
+        )
+        sg = SendGridAPIClient(os.environ['Email_api_key'])
+        response = sg.send(message)
+        return redirect(url_for('i_voted', election_id=election.id))
+      else:
+        flash(f"Invalid private key", category="danger")
+        return redirect(url_for('private_key', election_id=election.id))
+  except:
+    flash(f"Invalid URL", category="danger")
+    return redirect(url_for('home'))
+    
+  return render_template("i-voted.html",form=form)
+
+@app.route("/my-vote-results/<int:election_id>", methods=["POST", "GET"])
+def i_voted(election_id):
+  try:
+    form1 = Verification()
+    election = Election.query.get(election_id)
+    vote = Vote.query.filter_by(election=election.id, user=current_user.id).first()
+    candidate = Candidates.query.filter_by(id=vote.candidate).first()
+    if form1.validate_on_submit():
+      user_secret_key = form1.secret_key.data
+      secret_key = session["secret_key_result"]
+      if user_secret_key == secret_key:
+        flash(f"We've sent you your election vote result in your email address", category="success")
+        message = Mail(
+          from_email='kevinkagwima4@gmail.com',
+          to_emails=f'kevokagwima@gmail.com',
+          subject='ELECTRONIC VOTING - VERIFICATION',
+          html_content=f'<strong>Dear client {current_user.first_name} {current_user.last_name}</strong> You voted for <b>{candidate.full_name}</b>.'
+        )
+        sg = SendGridAPIClient(os.environ['Email_api_key'])
+        response = sg.send(message)
+        session.pop("secret_key_result", None)
+        return redirect(url_for('home'))
+      else:
+        session.pop("secret_key_result", None)
+        flash(f"Invalid secret key", category="danger")
+        return redirect(url_for('private_key', election_id=election.id))
+  except:
+    flash(f"Invalid URL", category="danger")
+    return redirect(url_for('home'))
+    
+  return render_template("i-voted.html",form1=form1)
 
 if __name__ == '__main__':
   app.run(debug=True)

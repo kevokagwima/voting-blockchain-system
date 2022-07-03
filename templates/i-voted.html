@@ -1,0 +1,42 @@
+{% extends 'layouts.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/i-voted.css') }}">
+{% endblock %}
+
+{% block title %}
+Voting System | I-Voted
+{% endblock %}
+
+{% block body %}
+<div class="verify">
+  {% if form %}
+  <h4>Enter the private key we sent you in your email</h4>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <div class="input">
+      {{ form.private_key.label }}
+      {{ form.private_key(placeholder="Private Key") }}
+    </div>
+    <button class="btn" type="submit">
+      <span class="button--text">Verify</span>
+    </button>
+  </form>
+  {% elif form1 %}
+  <h4>Enter the secret key we sent you in your email</h4>
+  <form method="post">
+    {{ form1.hidden_tag() }}
+    <div class="input">
+      {{ form1.secret_key.label }}
+      {{ form1.secret_key(placeholder="Secret Key") }}
+    </div>
+    <button class="btn" type="submit">
+      <span class="button--text">Verify</span>
+    </button>
+  </form>
+  {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='Js/register.js') }}"></script>
+{% endblock %}
