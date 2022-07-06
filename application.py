@@ -3,7 +3,7 @@ from flask_login import current_user, login_required, login_manager, LoginManage
 from sendgrid.helpers.mail import Mail
 from sendgrid import SendGridAPIClient
 import random, datetime, os, string, json
-from datetime import timedelta
+from datetime import date, timedelta
 from models import *
 from form import *
 
@@ -81,6 +81,9 @@ def home():
   election = Election.query.filter_by(status="Active").first()
   if current_user.is_authenticated:
     if election:
+      if election.end_date < datetime.datetime.now():
+        election.status = "Closed"
+        db.session.commit()
       voted_users = []
       votes = Vote.query.filter_by(election=election.id).all()
       for vote in votes:
@@ -258,7 +261,7 @@ def i_voted(election_id):
           from_email='kevinkagwima4@gmail.com',
           to_emails=f'kevokagwima@gmail.com',
           subject='ELECTRONIC VOTING - VERIFICATION',
-          html_content=f'<strong>Dear client {current_user.first_name} {current_user.last_name}</strong> You voted for <b>{candidate.full_name}</b>.'
+          html_content=f'<strong>Dear client {current_user.first_name} {current_user.last_name}</strong> You voted for <b>{candidate.full_name} of the {candidate.party} party.</b>.'
         )
         sg = SendGridAPIClient(os.environ['Email_api_key'])
         response = sg.send(message)

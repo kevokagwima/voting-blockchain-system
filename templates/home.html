@@ -24,6 +24,7 @@ Voting System | Home
     <div id="casted">
       <img loading="lazy" src="{{ url_for('static', filename='Images/tick.png') }}" alt="tick">
       <p>You have casted your vote</p>
+      <a id="my-vote" href="{{ url_for('private_key', election_id=election.id) }}">My Vote</a>
     </div>
     {% elif election and current_user.is_authenticated %}
     <a href="{{ url_for('election', election_id=election.id) }}">

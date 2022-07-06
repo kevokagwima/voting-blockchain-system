@@ -86,3 +86,11 @@
 #casted img {
   max-height: 2rem;
 }
+
+#my-vote {
+  color: black;
+  padding: 5px 8px;
+  background-color: greenyellow;
+  border-radius: 30rem;
+  font-family: var(--font-5);
+}
