@@ -6,8 +6,13 @@
 <h1>How It Works</h1>
 <ul>
 <li>Once a user has created ana account and logged in, they can begin the election process.</li>
+<img src="https://user-images.githubusercontent.com/63863253/190230930-e165f66b-5832-42aa-a125-fbb9bfd46751.png">
 <li>First, The user will be required to verify themselves, only verified users can be allowed to vote. A secret key is sent to the user's email address and upon entering the correct key, the user will be verified and is redirected to the election page.</li>
+<img src="https://user-images.githubusercontent.com/63863253/190231279-f816382b-b80a-4c87-a2f0-541ba5aa96a6.png">
 <li>Second, the election selects the candidates and presents them to the logged in user, then the user can click on the candidate they want to cast their vote for.</li>
+<img src="https://user-images.githubusercontent.com/63863253/190231459-b95b9c51-ecdb-4671-b78c-414eb7cf40d3.png">
+<img src="https://user-images.githubusercontent.com/63863253/190231694-089cd537-e96c-4287-885e-2350506cdf98.png">
 <li>Thirdly, the vote is recorded and secured and the user is sent the private key in their email address that they'll use if they want to retreive their casted vote.</li>
+<img src="https://user-images.githubusercontent.com/63863253/190231791-20990368-4d15-44eb-a297-c92214bfe954.png">
 <li>Finally, when the user wants to retreive their vote, they'll enter the sent private key and upon confirmation, a unique secret key is sent to the users email address, and upon successfull confirmation, the casted vote is sent to the user's email address.</li>
 </ul>
