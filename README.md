@@ -15,4 +15,6 @@
 <li>Thirdly, the vote is recorded and secured and the user is sent the private key in their email address that they'll use if they want to retreive their casted vote.</li>
 <img src="https://user-images.githubusercontent.com/63863253/190231791-20990368-4d15-44eb-a297-c92214bfe954.png">
 <li>Finally, when the user wants to retreive their vote, they'll enter the sent private key and upon confirmation, a unique secret key is sent to the users email address, and upon successfull confirmation, the casted vote is sent to the user's email address.</li>
+<img src="https://user-images.githubusercontent.com/63863253/190232002-57d8e028-0674-4166-9dec-097b2264467a.png">
+<img src="https://user-images.githubusercontent.com/63863253/190232275-fe297854-b977-418e-9076-69d3f70d3f3b.png">
 </ul>
