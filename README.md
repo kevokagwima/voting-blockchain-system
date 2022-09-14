@@ -2,7 +2,7 @@
 <p>This was my attempt of the proposed assignment.</p>
 <h1>The Project Description</h1>
 <p>The system was developed in python with the Flask framework. The system encorporated assymetric cryptographic encryption to ensure that once a vote has been casted it is kept secure and only the user that has voted, can retrieve their vote.</p>
-<p>The system assigns a private and private key to a user upon account creation, and their private key will be used when retreiving their casted vote.</p>
+<p>The system assigns a public and private key to a user upon casting their vote, and their private key will be used when retreiving their casted vote.</p>
 <h1>How It Works</h1>
 <ul>
 <li>Once a user has created an account and logged in, they can begin the election process.</li><br>
