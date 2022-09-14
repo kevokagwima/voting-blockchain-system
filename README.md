@@ -9,7 +9,7 @@
 <img src="https://user-images.githubusercontent.com/63863253/190230930-e165f66b-5832-42aa-a125-fbb9bfd46751.png">
 <li>First, The user will be required to verify themselves, only verified users can be allowed to vote. A secret key is sent to the user's email address and upon entering the correct key, the user will be verified and is redirected to the election page.</li><br>
 <img src="https://user-images.githubusercontent.com/63863253/190231279-f816382b-b80a-4c87-a2f0-541ba5aa96a6.png">
-<li>Second, the election selects the candidates and presents them to the logged in user, then the user can click on the candidate they want to cast their vote for.</li><br>
+<li>Secondly, the election selects the candidates and presents them to the logged in user, then the user can click on the candidate they want to cast their vote for.</li><br>
 <img src="https://user-images.githubusercontent.com/63863253/190231459-b95b9c51-ecdb-4671-b78c-414eb7cf40d3.png">
 <img src="https://user-images.githubusercontent.com/63863253/190231694-089cd537-e96c-4287-885e-2350506cdf98.png">
 <li>Thirdly, the vote is recorded and secured and the user is sent the private key in their email address that they'll use if they want to retreive their casted vote.</li><br>
