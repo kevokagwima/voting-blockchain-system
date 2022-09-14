@@ -5,7 +5,7 @@
 <p>The system assigns a private and private key to a user upon account creation, and their private key will be used when retreiving their casted vote.</p>
 <h1>How It Works</h1>
 <ul>
-<li>Once a user has created ana account and logged in, they can begin the election process.</li><br>
+<li>Once a user has created and account and logged in, they can begin the election process.</li><br>
 <img src="https://user-images.githubusercontent.com/63863253/190230930-e165f66b-5832-42aa-a125-fbb9bfd46751.png">
 <li>First, The user will be required to verify themselves, only verified users can be allowed to vote. A secret key is sent to the user's email address and upon entering the correct key, the user will be verified and is redirected to the election page.</li><br>
 <img src="https://user-images.githubusercontent.com/63863253/190231279-f816382b-b80a-4c87-a2f0-541ba5aa96a6.png">
