@@ -19,3 +19,5 @@
 <img src="https://user-images.githubusercontent.com/63863253/190232592-3ec92665-2c87-45bc-85cf-c863ec5c7ae8.png">
 <img src="https://user-images.githubusercontent.com/63863253/190232275-fe297854-b977-418e-9076-69d3f70d3f3b.png">
 </ul>
+<p>Once the user has casted their vote, they cannot be allowed to cast another vote, so only one vote per user.</p>
+<img src="https://user-images.githubusercontent.com/63863253/190233988-4a8a3d36-6839-437b-a610-152d4df07345.png">
